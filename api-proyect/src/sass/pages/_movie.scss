@@ -1,0 +1,40 @@
+@use "../tools/mixins" as movie;
+@use "../base/variables" as variable;
+
+.Movie {
+  @include movie.flex(center, center, column);
+  padding: 1.25rem;
+  gap: 1.5rem;
+
+  &-info {
+    @include movie.flex(flex-start, center, column);
+    gap: 1.25rem;
+  }
+
+  &-data {
+    @include movie.flex(flex-start, flex-start, column);
+    gap: 0.625rem;
+    padding: 0 15.625rem 0 15.625rem;
+    &--flex {
+      @include movie.flex(flex-start, flex-start);
+      gap: 0.625rem;
+    }
+    &--overview {
+        @include movie.flex(flex-start, flex-start, column);
+        gap: .625rem;
+    }
+  }
+
+  &-p {
+    font-family: map-get(variable.$fonts, "text");
+    font-size: 18px;
+    &--tagline {
+      font-size: 1.25em;
+    }
+  }
+
+  &-h3 {
+    font-family: map-get(variable.$fonts, "subtitle");
+    font-size: 22px;
+  }
+}

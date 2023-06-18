@@ -1,0 +1,10 @@
+@use "./base/reset";
+
+@forward "./pages/home";
+@forward "./pages/movie";
+@forward "./pages/search";
+@forward "./pages/signin";
+
+@forward "./components/navbar";
+@forward "./components/moviecard";
+@forward "./components/portal";

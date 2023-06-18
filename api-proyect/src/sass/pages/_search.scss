@@ -1,0 +1,11 @@
+@use "../tools/mixins" as main;
+
+.Main {
+  &-h2 {
+    @include main.flex;
+    gap: .625rem;
+  }
+  &-span {
+    font-weight: bold;
+  }
+}

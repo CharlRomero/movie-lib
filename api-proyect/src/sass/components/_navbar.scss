@@ -1,0 +1,52 @@
+@use "../tools/mixins" as navbar;
+@use "../base/variables" as variable;
+
+.Navbar {
+  background-color: map-get(variable.$colors, "black");
+  @include navbar.flex(space-around, center);
+  padding: 0.5rem;
+  border-bottom: 1px solid map-get(variable.$colors, "primary");
+  box-shadow: -6px -6px 10px map-get(variable.$colors, "primary"),
+    6px 6px 10px map-get(variable.$colors, "primary");
+
+  &-form {
+    @include navbar.flex;
+    gap: 0.5rem;
+  }
+
+  &-input {
+    background-color: map-get(variable.$colors, "white");
+    font-family: map-get(variable.$fonts, "subtitle");
+    color: map-get(variable.$colors, 'black' );
+    font-size: 1.125rem;
+    width: 31.25rem;
+    padding: 0.4375rem;
+    border-radius: 1.875rem;
+  }
+
+  &-input::placeholder {
+    padding-left: 0.625rem;
+  }
+
+  &-button {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+  }
+
+  &-link {
+    font-family: map-get(variable.$fonts, "subtitle");
+    font-size: 1.25em;
+  }
+
+  &-sigin {
+    font-family: map-get(variable.$fonts, "subtitle");
+    background-color: map-get(variable.$colors, "primary");
+    padding: 0.4375rem 0.875rem 0.4375rem 0.875rem;
+    border-radius: 1.875rem;
+  }
+
+  &-sigin:hover {
+    background-color: map-get(variable.$colors, "light");
+  }
+}
