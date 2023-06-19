@@ -4,16 +4,16 @@
 .SignIn {
   @include signin.flex;
   height: 100vh;
-  background: rgb(232, 45, 35);
-  background: linear-gradient(
-    90deg,
-    rgba(232, 45, 35, 1) 0%,
-    rgba(255, 50, 25, 1) 35%,
-    rgba(244, 67, 30, 1) 100%
-  );
   &-header {
     height: 100%;
     width: 50vw;
+    background: rgb(232, 45, 35);
+    background: linear-gradient(
+      90deg,
+      rgba(232, 45, 35, 1) 0%,
+      rgba(255, 50, 25, 1) 35%,
+      rgba(244, 67, 30, 1) 100%
+    );
     @include signin.flex(center, center, column);
     gap: 4rem;
     position: relative;
@@ -23,6 +23,9 @@
     }
     &--h1:hover {
       color: map-get(variable.$colors, "black");
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px map-get(variable.$colors, "black"));
+      transition: all 0.2s ease-in-out;
     }
     &--h2 {
       font-family: map-get(variable.$fonts, "text");
@@ -38,13 +41,12 @@
     gap: 2.5rem;
     &--input {
       @include signin.flex(center, center, column);
-      gap: .625rem
+      gap: 0.625rem;
     }
   }
   &-section {
     @include signin.flex(center, center, column);
     gap: 0.625rem;
-    background-color: map-get(variable.$colors, "black");
     height: 100%;
     width: 50vw;
   }
@@ -54,6 +56,5 @@
     color: map-get(variable.$colors, "white");
     background-color: map-get(variable.$colors, "black");
     width: 25rem;
-    border-bottom: 1px solid map-get(variable.$colors, "primary");
   }
 }

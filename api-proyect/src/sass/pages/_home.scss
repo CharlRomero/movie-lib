@@ -3,7 +3,7 @@
 
 .Main {
     &-section {
-        @include home.grid(5, 1.125rem, center);
+        @include home.grid(15rem, 1.125rem, center);
         padding: 10px;
     }
 

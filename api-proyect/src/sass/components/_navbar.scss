@@ -17,15 +17,11 @@
   &-input {
     background-color: map-get(variable.$colors, "white");
     font-family: map-get(variable.$fonts, "subtitle");
-    color: map-get(variable.$colors, 'black' );
+    color: map-get(variable.$colors, "black");
     font-size: 1.125rem;
     width: 31.25rem;
-    padding: 0.4375rem;
+    padding: 0.4375rem 1.25rem 0.4375rem 1.25rem;
     border-radius: 1.875rem;
-  }
-
-  &-input::placeholder {
-    padding-left: 0.625rem;
   }
 
   &-button {
@@ -37,6 +33,13 @@
   &-link {
     font-family: map-get(variable.$fonts, "subtitle");
     font-size: 1.25em;
+  }
+
+  &-link:hover {
+    color: map-get(variable.$colors, "primary");
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 2px map-get(variable.$colors, 'light'));
+    transition: all 0.2s ease-in-out;
   }
 
   &-sigin {

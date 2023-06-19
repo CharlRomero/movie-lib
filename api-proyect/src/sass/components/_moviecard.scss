@@ -6,7 +6,7 @@
   width: 15.625rem;
   height: 475px;
   @include moviecard.flex(space-between, flex-start, column);
-  box-shadow: -2px -2px 10px map-get(variable.$colors, "black"),
+  box-shadow: -1px -1px 10px map-get(variable.$colors, "light"),
     2px 2px 10px map-get(variable.$colors, "primary");
   border-radius: 0 1.875rem 0 0;
   position: relative;

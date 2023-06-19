@@ -7,7 +7,7 @@
 
 @mixin grid($columns, $gap, $justify) {
     display: grid;
-    grid-template-columns: repeat($columns, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax($columns, 1fr));
     gap: $gap;
     justify-items: $justify;
 }
