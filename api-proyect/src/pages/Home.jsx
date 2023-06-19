@@ -23,7 +23,7 @@ export const Home = () => {
       <div className="Main">
         <h2 className="Main-h2">Mejores películas</h2>
         <section className="Main-section">
-        {topMovies.map((movie, key) => (
+          {topMovies.map((movie, key) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </section>

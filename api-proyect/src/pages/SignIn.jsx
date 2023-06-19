@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Button } from "../components/Button";
 import { UserAuth } from "../context/AuthContext";
@@ -23,25 +23,35 @@ export const SignIn = () => {
   return (
     <section className="SignIn">
       <section className="SignIn-header">
-        <h2 className="SignIn-h2">Inicia sesión o registrate</h2>
-        <h3 className="SignIn-h3">Te damos la bienvenida</h3>
+        <h2 className="SignIn-header--h2">Inicia sesión o registrate</h2>
+        <h3 className="SignIn-header--h3">Te damos la bienvenida</h3>
+        <Link className="SignIn-header--h1" to="/">
+          Movie Lib
+        </Link>
       </section>
       <section className="SignIn-section">
         <form action="" className="SignIn-form">
-          <input
-            type="email"
-            className="SignIn-input"
-            placeholder="Correo electrónico"
-          />
-          <input
-            type="password"
-            className="SignIn-input"
-            placeholder="Contraseña"
-          />
-          <Button tittle="Continúa"></Button>
+          <section className="SignIn-form--input">
+            <input
+              type="email"
+              className="SignIn-input"
+              placeholder="Correo electrónico"
+            />
+            <input
+              type="password"
+              className="SignIn-input"
+              placeholder="Contraseña"
+            />
+          </section>
+          <Button className="Button" title="Continúa"></Button>
         </form>
+        <h2>o</h2>
         <section className="SignIn-socialLog">
-          <Button title="Google" onClick={handleGoogleSignIn}>
+          <Button
+            className="Button"
+            title="Google"
+            onClick={handleGoogleSignIn}
+          >
             <svg
               className="Button-svg"
               xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,5 @@
 @use "../tools/mixins" as signin;
+@use "../base/variables" as variable;
 
 .SignIn {
   @include signin.flex;
@@ -11,7 +12,48 @@
     rgba(244, 67, 30, 1) 100%
   );
   &-header {
-    width: 50vh;
-    background-color: aqua;
+    height: 100%;
+    width: 50vw;
+    @include signin.flex(center, center, column);
+    gap: 4rem;
+    position: relative;
+    &--h1 {
+      font-family: map-get(variable.$fonts, "title");
+      font-size: 5em;
+    }
+    &--h1:hover {
+      color: map-get(variable.$colors, "black");
+    }
+    &--h2 {
+      font-family: map-get(variable.$fonts, "text");
+      font-size: 2em;
+    }
+    &--h3 {
+      font-family: map-get(variable.$fonts, "subtitle");
+      font-size: 2rem;
+    }
+  }
+  &-form {
+    @include signin.flex(center, center, column);
+    gap: 2.5rem;
+    &--input {
+      @include signin.flex(center, center, column);
+      gap: .625rem
+    }
+  }
+  &-section {
+    @include signin.flex(center, center, column);
+    gap: 0.625rem;
+    background-color: map-get(variable.$colors, "black");
+    height: 100%;
+    width: 50vw;
+  }
+  &-input {
+    font-family: map-get(variable.$fonts, "text");
+    padding: 0.9375rem;
+    color: map-get(variable.$colors, "white");
+    background-color: map-get(variable.$colors, "black");
+    width: 25rem;
+    border-bottom: 1px solid map-get(variable.$colors, "primary");
   }
 }

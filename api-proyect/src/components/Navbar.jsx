@@ -52,7 +52,7 @@ export const Navbar = ({ children }) => {
         </button>
       </form>
       {user?.displayName ? (
-        <Button className="Navbar-logout" onClick={handleSignOut} title={Logout} />
+        <Button className="Button" onClick={handleSignOut} title={Logout} />
       ) : (
         <Link className="Navbar-sigin" to="/signIn">Sign In</Link>
       )}
