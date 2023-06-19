@@ -12,10 +12,6 @@ export const Home = () => {
   const topMovies = useFetch(URL, "");
   const [active, setActive] = useState(false);
 
-  const toggle = () => {
-    setActive(!active);
-  };
-
   return (
     <>
       <Navbar />

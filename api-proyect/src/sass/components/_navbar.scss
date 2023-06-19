@@ -22,23 +22,23 @@
     padding: 0.4375rem 1.25rem 0.4375rem 1.25rem;
     border-radius: 1.875rem 0 0 1.875rem;
   }
-  
+
   &-button {
     background-color: map-get(variable.$colors, "primary");
     border-radius: 0 1.875rem 1.875rem 0;
-    padding: .4375rem 1rem .5313rem .625rem;
+    padding: 0.4375rem 1rem 0.5313rem 0.625rem;
     cursor: pointer;
   }
-  
+
   &-button:hover {
     background-color: map-get(variable.$colors, "light");
   }
-
+  
   &-svg {
     width: 1.25rem;
     height: 1.25rem;
   }
-
+  
   &-link {
     font-family: map-get(variable.$fonts, "subtitle");
     font-size: 1.25em;
@@ -50,15 +50,20 @@
     filter: drop-shadow(0 0 2px map-get(variable.$colors, "light"));
     transition: all 0.2s ease-in-out;
   }
-
-  &-sigin {
-    font-family: map-get(variable.$fonts, "subtitle");
-    background-color: map-get(variable.$colors, "primary");
-    padding: 0.4375rem 0.875rem 0.4375rem 0.875rem;
-    border-radius: 1.875rem;
+  
+  &-profile {
+    @include navbar.flex;
+    gap: 0.625rem;
   }
-
-  &-sigin:hover {
-    background-color: map-get(variable.$colors, "light");
+  
+  &-img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border-image: none;
+  }
+  
+  &-name {
+    font-family: map-get(variable.$fonts, "subtitle");
   }
 }

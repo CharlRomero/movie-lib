@@ -1,22 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
 
 import { UserAuth } from "../context/AuthContext";
 import Button from "../components/Button";
 
 export const Navbar = ({ children }) => {
+  const clientId =
+    "707983214788-cbkrkskv4kk92ksbmcokunkaoojbsnon.apps.googleusercontent.com";
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
-  const { user, logOut } = UserAuth();
-
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [user, setUser] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +21,22 @@ export const Navbar = ({ children }) => {
     navigate(`/search?q=${search}`);
     setSearch("");
   };
+
+  const onSuccess = (response) => {
+    setUser(response.profileObj);
+  };
+  const onFailure = (response) => {
+    console.log("Something went wrong");
+  };
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
 
   return (
     <nav className="Navbar">
@@ -52,11 +63,18 @@ export const Navbar = ({ children }) => {
           </svg>
         </button>
       </form>
-      {user?.displayName ? (
-        <Button className="Button" onClick={handleSignOut} title={Logout} />
-      ) : (
-        <Link className="Navbar-sigin" to="/signIn">Sign In</Link>
-      )}
+      
+      <GoogleLogin
+        clientId={clientId}
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+      />
+      
+      <section className="Navbar-profile">
+        <h3 className="Navbar-name">{user.name}</h3>
+        <img className="Navbar-img" src={user.imageUrl} alt="" />
+      </section>
     </nav>
   );
 };

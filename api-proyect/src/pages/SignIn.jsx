@@ -1,24 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
 
 import { Button } from "../components/Button";
 import { UserAuth } from "../context/AuthContext";
 
+
 export const SignIn = () => {
-  const { googleSignIn, user } = UserAuth();
+  const { googleSignIn } = UserAuth();
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
 
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
     } catch (error) {}
   };
-
-  useEffect(() => {
-    if (user != null) {
-      navigate("/account");
-    }
-  }, []);
+  const onSuccess = (response) => {
+    setUser(response.profileObj);
+  };
+  const onFailure = (response) => {
+    console.log("Something went wrong");
+  };
 
   return (
     <section className="SignIn">
@@ -47,19 +51,13 @@ export const SignIn = () => {
         </form>
         <h2>o</h2>
         <section className="SignIn-socialLog">
-          <Button
-            className="Button"
-            title="Google"
-            onClick={handleGoogleSignIn}
-          >
-            <svg
-              className="Button-svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
-            </svg>
-          </Button>
+          <GoogleLogin
+            clientId={clientId}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            buttonText="Continue with Google"
+            cookiePolicy={"single_host_origin"}
+          />
         </section>
       </section>
     </section>
